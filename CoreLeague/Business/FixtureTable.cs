@@ -13,7 +13,6 @@ namespace CoreLeague.Business
         int count;
         List<string> myMatchingTeamList;
         List<string> myProperList;
-        List<string> shuffledcards;
         int x;
         FixtureDemoContext db = new FixtureDemoContext();
 
@@ -52,7 +51,6 @@ namespace CoreLeague.Business
                 
                 for(int j = 0; j < myMatchingTeamList.Count; j++)
                 {
-                    shuffledcards = myMatchingTeamList.OrderBy(a => Guid.NewGuid()).ToList();
 
                     var array = SplitForMe(myMatchingTeamList[j], '-');
                      
