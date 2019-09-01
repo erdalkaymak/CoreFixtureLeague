@@ -13,8 +13,10 @@ namespace CoreLeague
         {
             
             FixtureTable table = new FixtureTable();
+
             table.FillTeamTable();
             table.FillFixtureSqlTable();
+
             Console.WriteLine("You can close this and look LeagueDB in SqlServer");
             Console.ReadLine();
 
