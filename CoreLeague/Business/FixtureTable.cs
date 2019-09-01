@@ -80,7 +80,7 @@ namespace CoreLeague.Business
 
         }
 
-        public void FillSqlTable()
+        public void FillFixtureSqlTable()
         {
             
             TeamRepository repTeam = new TeamRepository(db);
@@ -127,6 +127,29 @@ namespace CoreLeague.Business
             var array = mystring.Split(separator);
 
             return array;
+        }
+
+
+        public  void FillTeamTable()
+        {
+            TeamRepository repTeam = new TeamRepository(db);
+            if(repTeam.GetAll().Count == 18)
+            {
+                return;
+            }
+            for (int i = 65; i < 83; i++)
+            {
+                int j = 1;
+                int unicode = i;
+                char character = (char)unicode;
+                string text = character.ToString();
+                Team[] myteam = new Team[16];
+                myteam[j] = new Team();
+                myteam[j].TeamName = text;
+                repTeam.Insert(myteam[j]);
+                j++;
+            }
+
         }
 
     }
