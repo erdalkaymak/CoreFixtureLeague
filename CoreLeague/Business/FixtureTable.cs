@@ -34,8 +34,7 @@ namespace CoreLeague.Business
                 for (int j = i; j < myTeamList.Count - 1; j++)
                 {
                     matchedTeams = myTeamList[i].TeamName + "-" + myTeamList[j+1].TeamName;
-                    myMatchingTeamList.Add(matchedTeams);
-                  
+                    myMatchingTeamList.Add(matchedTeams);                  
                 }
             }
             return myMatchingTeamList;
@@ -51,17 +50,13 @@ namespace CoreLeague.Business
                 
                 for(int j = 0; j < myMatchingTeamList.Count; j++)
                 {
-
                     var array = SplitForMe(myMatchingTeamList[j], '-');
                      
-
                     var list = myProperList.Skip(x).Take(9).Where(c => c.Contains(array[0]) || c.Contains(array[1])).FirstOrDefault();
-                     
-                  
+                                       
                     if (list == null && !myProperList.Contains(myMatchingTeamList[j]))
                     {                       
-                        myProperList.Add(myMatchingTeamList[j]);
-                       
+                        myProperList.Add(myMatchingTeamList[j]);                      
                     }                   
                     
                 }
@@ -70,14 +65,11 @@ namespace CoreLeague.Business
                 {
                     x += 9;
                     count++;
-
                 }
-
             }
            
             return myProperList;
            
-
         }
 
         public void FillFixtureSqlTable()
@@ -86,10 +78,12 @@ namespace CoreLeague.Business
             TeamRepository repTeam = new TeamRepository(db);
             // FixtureMockRepository repMockFixture = new FixtureMockRepository();
             FixtureRepository repFixture = new FixtureRepository(db);
+
             if (repFixture.GetAll().Count == 153)
             {
                 return;
             }
+
             Fixture[] myfixture = new Fixture[153];
                         
             int count = 0;
