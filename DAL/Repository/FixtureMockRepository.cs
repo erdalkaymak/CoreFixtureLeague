@@ -10,10 +10,14 @@ namespace DAL.Repositorys
     {
         public static List<Fixture> myMockFixture;
 
-        public override void Insert(Fixture entity)
+        public FixtureMockRepository(FixtureDemoContext db) : base(db)
         {
-            myMockFixture = new List<Fixture>();
-            myMockFixture.Add(entity);
         }
+
+        //public override void Insert(Fixture entity)
+        //{
+        //    myMockFixture = new List<Fixture>();
+        //    myMockFixture.Add(entity);
+        //}
     }
 }

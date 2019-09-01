@@ -15,10 +15,11 @@ namespace CoreLeague.Business
         List<string> myProperList;
         List<string> shuffledcards;
         int x;
-        
+        FixtureDemoContext db = new FixtureDemoContext();
+
         public List<Team> GetAllTeamName()
         {
-            TeamRepository rep = new TeamRepository();
+            TeamRepository rep = new TeamRepository(db);
             var list = rep.GetAll();
             return list;
         }
@@ -83,10 +84,11 @@ namespace CoreLeague.Business
 
         public void FillSqlTable()
         {
-            TeamRepository repTeam = new TeamRepository();
+            
+            TeamRepository repTeam = new TeamRepository(db);
             // FixtureMockRepository repMockFixture = new FixtureMockRepository();
-            FixtureRepository repFixture = new FixtureRepository();
-            FixtureDemoContext db = new FixtureDemoContext();
+            FixtureRepository repFixture = new FixtureRepository(db);
+            
             Fixture[] myfixture = new Fixture[153];
                         
             int count = 0;
@@ -99,16 +101,13 @@ namespace CoreLeague.Business
             for(int i = 0; i < sqlList.Count; i++)
             {
                 var myArray = SplitForMe(sqlList[i], '-');
-                var team1 = repTeam.FindMyTeamWithName(myArray[0]);
-                var team2 = repTeam.FindMyTeamWithName(myArray[1]);
+                var team1 = repTeam.FindMyTeamWithName(myArray[0],db);
+                var team2 = repTeam.FindMyTeamWithName(myArray[1],db);
 
                 myfixture[i] = new Fixture();
                 myfixture[i].Team1 = team1;
                 myfixture[i].Team2 = team2;
                 myfixture[i].FixtureDate = startDate;
-                //repMockFixture.Insert(myfixture[i]);
-                //db.Fixtures.Add(myfixture[i]);
-                //db.SaveChanges();
                 repFixture.Insert(myfixture[i]);
                 count++;
 

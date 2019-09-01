@@ -8,6 +8,8 @@ namespace DAL.Repositorys
 {
     public class FixtureRepository : BaseGenericRepository<Fixture>, IFixtureRepository
     {
-       
+        public FixtureRepository(FixtureDemoContext db) : base(db)
+        {
+        }
     }
 }

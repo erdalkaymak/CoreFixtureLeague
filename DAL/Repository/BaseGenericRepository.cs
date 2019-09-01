@@ -8,7 +8,12 @@ namespace DAL.Repositorys
 {
     public class BaseGenericRepository<T> : IBaseRepository<T> where T : Base
     {
-        protected FixtureDemoContext _db = new FixtureDemoContext();
+        FixtureDemoContext _db;
+
+        public BaseGenericRepository(FixtureDemoContext db)
+        {
+            _db = db;
+        }
 
         public void Delete(T entity)
         {
@@ -26,7 +31,7 @@ namespace DAL.Repositorys
            return _db.Set<T>().ToList();
         }
 
-        public virtual void Insert(T entity)
+        public  void Insert(T entity)
         {
             _db.Set<T>().Add(entity);
             _db.SaveChanges();

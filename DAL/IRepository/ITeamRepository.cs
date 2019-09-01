@@ -6,7 +6,7 @@ namespace DAL.Model.IRepository
 {
    public interface ITeamRepository : IBaseRepository<Team>
     {
-        Team FindMyTeamWithName(string name);
+        Team FindMyTeamWithName(string name,FixtureDemoContext db);
        
     }
 }

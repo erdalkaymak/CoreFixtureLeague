@@ -9,9 +9,13 @@ namespace DAL.Repositorys
 {
     public class TeamRepository : BaseGenericRepository<Team>, ITeamRepository
     {
-        public Team FindMyTeamWithName(string name)
+        public TeamRepository(FixtureDemoContext db) : base(db)
         {
-            return _db.Teams.Where(c => c.TeamName == name).FirstOrDefault();
+        }
+
+        public Team FindMyTeamWithName(string name,FixtureDemoContext db)
+        {
+            return db.Teams.Where(c => c.TeamName == name).FirstOrDefault();
         }
     }
 }
