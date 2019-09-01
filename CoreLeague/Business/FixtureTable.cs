@@ -124,7 +124,7 @@ namespace CoreLeague.Business
         }
 
 
-        public  void FillTeamTable()
+        public void FillTeamTable()
         {
             TeamRepository repTeam = new TeamRepository(db);
             if(repTeam.GetAll().Count == 18)
