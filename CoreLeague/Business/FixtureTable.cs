@@ -73,8 +73,7 @@ namespace CoreLeague.Business
         }
 
         public void FillFixtureSqlTable()
-        {
-            
+        {           
             TeamRepository repTeam = new TeamRepository(db);
             // FixtureMockRepository repMockFixture = new FixtureMockRepository();
             FixtureRepository repFixture = new FixtureRepository(db);
@@ -87,7 +86,6 @@ namespace CoreLeague.Business
             Fixture[] myfixture = new Fixture[153];
                         
             int count = 0;
-
 
             DateTime startDate = new DateTime(2019,09,1);
 
@@ -114,7 +112,6 @@ namespace CoreLeague.Business
 
             }
         }
-
 
         public string[] SplitForMe(string mystring,char separator)
         {
