@@ -91,8 +91,8 @@ namespace CoreLeague.Business
                         
             int count = 0;
 
-            DateTime date = DateTime.Now;
-            DateTime startDate = date.AddDays(1);
+
+            DateTime startDate = new DateTime(2019,09,1);
 
             var sqlList = FillListProperMatching();
 
@@ -107,8 +107,9 @@ namespace CoreLeague.Business
                 myfixture[i].Team2 = team2;
                 myfixture[i].FixtureDate = startDate;
                 //repMockFixture.Insert(myfixture[i]);
-                db.Fixtures.Add(myfixture[i]);
-                db.SaveChanges();
+                //db.Fixtures.Add(myfixture[i]);
+                //db.SaveChanges();
+                repFixture.Insert(myfixture[i]);
                 count++;
 
                 if (count == 9)
