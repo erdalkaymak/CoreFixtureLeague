@@ -88,7 +88,10 @@ namespace CoreLeague.Business
             TeamRepository repTeam = new TeamRepository(db);
             // FixtureMockRepository repMockFixture = new FixtureMockRepository();
             FixtureRepository repFixture = new FixtureRepository(db);
-            
+            if (repFixture.GetAll().Count == 153)
+            {
+                return;
+            }
             Fixture[] myfixture = new Fixture[153];
                         
             int count = 0;
